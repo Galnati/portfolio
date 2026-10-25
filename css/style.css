@@ -413,25 +413,26 @@ h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.02em; line-height: 
 .processo {
   position: relative;
   overflow: hidden;
-  min-height: 300px;
+  min-height: 0;
   padding: 24px;
   border-radius: var(--raio);
   background: var(--branco);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  padding-top: 150px;
 }
 .processo__pontos { position: absolute; top: 24px; left: 24px; display: flex; gap: 4px; }
 .processo__pontos i { width: 7px; height: 7px; border-radius: 50%; background: var(--azul); }
 .processo__num {
   position: absolute;
-  top: -10px;
-  right: 10px;
+  top: 16px;
+  right: 18px;
   font-size: 120px;
   font-weight: 700;
   line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(0, 0, 0, .07);
+  color: #ededed;
+  -webkit-text-stroke: 1.5px #c4c4c4;
 }
 .processo h3 { font-size: 20px; margin-bottom: 8px; }
 .processo p { margin: 0; font-size: 15px; color: var(--texto-suave); }
@@ -476,7 +477,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.02em; line-height: 
   z-index: 1;
   margin: 0;
   padding: 20px 0 10px;
-  font-size: clamp(48px, 11vw, 160px);
+  font-size: clamp(28px, 9.2vw, 150px);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1;
