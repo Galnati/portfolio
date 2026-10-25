@@ -17,18 +17,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Lily+Script+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<script>
-  // Mostra a abertura só na primeira visita da sessão
-  try { if (sessionStorage.getItem("abertura-vista")) document.documentElement.classList.add("sem-abertura"); } catch (e) {}
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("sem-abertura");
-</script>
+<link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
-<div class="abertura" aria-hidden="true">
-  <span class="abertura__texto">Maicon Rodrigues · UX/UI Designer</span>
-  <div class="abertura__card"><img src="img/projetos/chef-card.webp" alt=""></div>
-</div>
 <header class="nav">
   <a class="nav__marca" href="index.html">
     <img src="img/geral/avatar-mini.webp" alt="" width="40" height="40">
@@ -62,8 +53,10 @@
     </div>
   </div>
   <div class="hero__base">
-    <p class="hero__oi">👋 Oi, sou Maicon</p>
-    <h1 class="script">Ux/Ui designer</h1>
+    <div class="hero__titulo">
+      <p class="hero__oi">👋 Oi, sou Maicon</p>
+      <h1 class="script">Ux/Ui designer</h1>
+    </div>
     <p class="hero__texto">Crio experiências digitais pensando em quem vai usar: interfaces simples, acessíveis e feitas para resolver problemas reais do dia a dia.</p>
   </div>
 </section>
@@ -179,7 +172,6 @@
   </div>
   <p class="rodape__nome" aria-hidden="true">Maicon Rodrigues</p>
 </footer>
-<script src="js/preloader.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=4"></script>
 </body>
 </html>
