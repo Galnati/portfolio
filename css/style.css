@@ -184,25 +184,50 @@ h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.02em; line-height: 
 .hero {
   position: relative;
   height: 100vh;
-  min-height: 640px;
+  height: 100svh;
+  min-height: 620px;
   overflow: hidden;
   background: linear-gradient(var(--azul-claro), var(--azul));
   color: var(--branco);
 }
 .hero__ceu {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  left: -5%;
+  top: -5%;
+  width: 110%;
+  height: 110%;
+  max-width: none;
   object-fit: cover;
+  will-change: transform;
+}
+
+/* Palco centraliza a cabeça na tela */
+.hero__palco {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 700px;
+  pointer-events: none;
+}
+.hero__flutua {
+  height: 88%;
+  display: flex;
+  justify-content: center;
+  animation: flutuar 4s ease-in-out infinite;
+}
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 .hero__avatar {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: min(56vw, 720px);
-  aspect-ratio: 1184 / 1328;
-  transform: translate(-50%, 4%);
+  position: relative;
+  height: 100%;
+  aspect-ratio: 1200 / 1320;
+  max-width: none;
+  transform-origin: 50% 75%;
+  will-change: transform;
 }
 .hero__avatar img {
   position: absolute;
@@ -210,36 +235,61 @@ h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.02em; line-height: 
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: bottom;
   opacity: 0;
-  transition: opacity .35s ease;
+  transition: opacity .18s ease-out;
 }
 .hero__avatar img.ativo { opacity: 1; }
 
+/* Textos centralizados embaixo */
 .hero__base {
   position: absolute;
   left: var(--lateral);
   right: var(--lateral);
-  bottom: 40px;
+  bottom: 36px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 32px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
-.hero__oi { margin: 0 0 6px; font-size: 15px; font-weight: 500; }
-.hero__linha { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.hero__oi { margin: 0 0 4px; font-size: 16px; font-weight: 500; }
 .hero h1 {
-  font-size: clamp(48px, 8vw, 104px);
+  font-size: clamp(52px, 9vw, 120px);
   line-height: 1;
-  text-shadow: 0 4px 30px rgba(44, 63, 97, .25);
+  text-shadow: 0 4px 30px rgba(44, 63, 97, .3);
 }
 .hero__texto {
-  max-width: 300px;
-  margin: 0;
-  font-size: 16px;
+  max-width: 460px;
+  margin: 14px 0 0;
+  font-size: 17px;
   font-weight: 500;
   color: var(--marinho);
 }
+
+/* ---------- Abertura (preloader) ---------- */
+.abertura {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: #fff;
+}
+.sem-abertura .abertura { display: none; }
+.abertura-ativa body { overflow: hidden; }
+.abertura__texto,
+.abertura__card { opacity: 0; filter: blur(10px); }
+.abertura__texto { font-size: 16px; font-weight: 500; letter-spacing: -0.01em; }
+.abertura__card {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+}
+.abertura__card img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------- Seções ---------- */
 .secao {
@@ -316,6 +366,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.02em; line-height: 
   height: 100%;
   min-height: 420px;
   object-fit: cover;
+  object-position: center 25%;
   border-radius: var(--raio);
 }
 
@@ -561,8 +612,9 @@ h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.02em; line-height: 
 /* ---------- Contato ---------- */
 .contato { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .contato img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--raio); }
-.contato__foto img { min-height: 420px; }
-.contato__img img { aspect-ratio: 1.5; }
+.contato__foto { position: relative; min-height: 420px; }
+.contato__foto img { position: absolute; inset: 0; object-position: center 30%; }
+.contato__img img { aspect-ratio: 1.5; object-position: center 30%; }
 
 .form { display: flex; flex-direction: column; gap: 18px; }
 .form label { display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 600; }
@@ -589,6 +641,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.02em; line-height: 
   html { scroll-behavior: auto; }
   .revelar { opacity: 1; transform: none; transition: none; }
   .hero__avatar img { transition: none; }
+  .hero__flutua { animation: none; }
 }
 
 /* ---------- Responsivo ---------- */
@@ -604,13 +657,15 @@ h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.02em; line-height: 
 }
 
 @media (max-width: 640px) {
-  .hero { min-height: 600px; }
-  .hero__avatar { width: 120vw; bottom: 150px; }
-  .hero__base { flex-direction: column; align-items: flex-start; gap: 16px; bottom: 24px; }
-  .hero__texto { max-width: none; }
+  .hero { min-height: 560px; }
+  .hero__palco { align-items: flex-start; padding-top: 76px; }
+  .hero__flutua { height: auto; width: 100%; }
+  .hero__avatar { height: auto; width: 128vw; flex-shrink: 0; }
+  .hero__base { bottom: 28px; }
+  .hero__texto { font-size: 15px; }
   .secao { padding: 80px var(--lateral); }
   .card,
-  .card--largo { aspect-ratio: 0.9; }
+  .card--largo { aspect-ratio: 1.15; }
   .card__info { left: 10px; right: 10px; bottom: 10px; padding: 14px; }
   .card__info h3 { font-size: 20px; }
   .rodape__contatos { grid-template-columns: 1fr; }

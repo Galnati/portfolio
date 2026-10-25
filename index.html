@@ -18,8 +18,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Lily+Script+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script>
+  // Mostra a abertura só na primeira visita da sessão
+  try { if (sessionStorage.getItem("abertura-vista")) document.documentElement.classList.add("sem-abertura"); } catch (e) {}
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("sem-abertura");
+</script>
 </head>
 <body>
+<div class="abertura" aria-hidden="true">
+  <span class="abertura__texto">Maicon Rodrigues · UX/UI Designer</span>
+  <div class="abertura__card"><img src="img/projetos/chef-card.webp" alt=""></div>
+</div>
 <header class="nav">
   <a class="nav__marca" href="index.html">
     <img src="img/geral/avatar-mini.webp" alt="" width="40" height="40">
@@ -41,21 +50,20 @@
 <main>
 <section class="hero">
   <img class="hero__ceu" src="img/geral/ceu.webp" alt="" aria-hidden="true">
-  <div class="hero__avatar" aria-hidden="false">
+  <div class="hero__palco">
+    <div class="hero__flutua">
+      <div class="hero__avatar">
       <img src="img/avatar/centro.webp" alt="Avatar 3D de Maicon" data-olhar="centro" class=ativo>
       <img src="img/avatar/esquerda.webp" alt="" data-olhar="esquerda">
       <img src="img/avatar/direita.webp" alt="" data-olhar="direita">
       <img src="img/avatar/cima.webp" alt="" data-olhar="cima">
       <img src="img/avatar/baixo.webp" alt="" data-olhar="baixo">
-  </div>
-  <div class="hero__base">
-    <div class="hero__titulo">
-      <p class="hero__oi">👋 Oi, sou Maicon</p>
-      <div class="hero__linha">
-        <h1 class="script">Ux/Ui designer</h1>
-        <a class="btn btn--branco btn--peq" href="contact-me/index.html"><span>me dê um oi!</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
       </div>
     </div>
+  </div>
+  <div class="hero__base">
+    <p class="hero__oi">👋 Oi, sou Maicon</p>
+    <h1 class="script">Ux/Ui designer</h1>
     <p class="hero__texto">Crio experiências digitais pensando em quem vai usar: interfaces simples, acessíveis e feitas para resolver problemas reais do dia a dia.</p>
   </div>
 </section>
@@ -67,28 +75,28 @@
   </div>
   <div class="zigue">
 <a class="card card--esq revelar" href="projects/chef-sem-tempo/index.html">
-  <img src="img/projetos/chef-capa.webp" alt="Capa do projeto Chef sem Tempo" loading="lazy">
+  <img src="img/projetos/chef-card.webp" alt="Capa do projeto Chef sem Tempo" loading="lazy">
   <div class="card__info">
     <h3>Chef sem Tempo.</h3>
     <ul class="tags"><li>UX/UI Design</li><li>5 meses</li><li>2025</li></ul>
   </div>
 </a>
 <a class="card card--dir revelar" href="projects/lacreisaude/index.html">
-  <img src="img/projetos/lacrei-capa.webp" alt="Capa do projeto Lacrei Saúde" loading="lazy">
+  <img src="img/projetos/lacrei-card.webp" alt="Capa do projeto Lacrei Saúde" loading="lazy">
   <div class="card__info">
     <h3>Lacrei Saúde.</h3>
     <ul class="tags"><li>UX/UI Design</li><li>1 Semana</li><li>2026</li></ul>
   </div>
 </a>
 <a class="card card--esq revelar" href="projects/sumup-pix/index.html">
-  <img src="img/projetos/sumup-capa.webp" alt="Capa do projeto SumUp+Pix" loading="lazy">
+  <img src="img/projetos/sumup-card.webp" alt="Capa do projeto SumUp+Pix" loading="lazy">
   <div class="card__info">
     <h3>SumUp+Pix.</h3>
     <ul class="tags"><li>UX/UI Design</li><li>4 meses</li><li>2025</li></ul>
   </div>
 </a>
 <a class="card card--dir revelar" href="projects/projetoitau/index.html">
-  <img src="img/projetos/itau-capa.webp" alt="Capa do projeto Itaú" loading="lazy">
+  <img src="img/projetos/itau-card.webp" alt="Capa do projeto Itaú" loading="lazy">
   <div class="card__info">
     <h3>Itaú.</h3>
     <ul class="tags"><li>UX/UI Design</li><li>5 meses</li><li>2025</li></ul>
@@ -107,7 +115,7 @@
   </div>
   <div class="sobre">
     <figure class="sobre__foto revelar">
-      <img src="img/geral/foto-contato.webp" alt="Foto de Maicon Rodrigues" loading="lazy">
+      <img src="img/geral/sobre.webp" alt="Avatar 3D de Maicon sorrindo de óculos escuros" loading="lazy">
     </figure>
     <div class="painel sobre__texto revelar">
       <h3>Sobre mim...</h3>
@@ -171,6 +179,7 @@
   </div>
   <p class="rodape__nome" aria-hidden="true">Maicon Rodrigues</p>
 </footer>
+<script src="js/preloader.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
