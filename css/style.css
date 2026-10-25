@@ -618,3 +618,12 @@ h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.02em; line-height: 
   .exps li { flex-direction: column; align-items: flex-start; }
   .nav__marca span { font-size: 13px; }
 }
+
+.form__erro {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #fdecec;
+  color: #a12020 !important;
+  font-size: 14px;
+}

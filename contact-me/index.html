@@ -51,9 +51,8 @@
 </section>
 <div class="contato">
   <figure class="contato__foto revelar"><img src="../img/geral/foto-contato.webp" alt="Maicon no seu espaço de trabalho" loading="lazy"></figure>
-  <form class="painel form revelar" name="contato" method="POST" action="../obrigado/index.html" data-netlify="true" netlify-honeypot="bot-field">
-    <input type="hidden" name="form-name" value="contato">
-    <p class="escondido"><label>Não preencha: <input name="bot-field"></label></p>
+  <form class="painel form revelar" name="contato" method="POST" action="/contato.php">
+    <p class="escondido" aria-hidden="true"><label>Não preencha: <input name="site" tabindex="-1" autocomplete="off"></label></p>
     <label>Nome<input type="text" name="nome" placeholder="Seu Nome" required autocomplete="name"></label>
     <label>Endereço de E-mail<input type="email" name="email" placeholder="exemplo@email.com" required autocomplete="email"></label>
     <label>Mensagem<textarea name="mensagem" rows="6" placeholder="Como posso te ajudar?" required></textarea></label>

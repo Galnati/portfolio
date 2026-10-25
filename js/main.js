@@ -101,3 +101,13 @@ if (avatar) {
     }, 1800);
   }
 }
+
+// ---------- 4. Aviso de erro no formulário ----------
+const formulario = document.querySelector(".form");
+if (formulario && new URLSearchParams(location.search).has("erro")) {
+  const aviso = document.createElement("p");
+  aviso.className = "form__erro";
+  aviso.setAttribute("role", "alert");
+  aviso.textContent = "Não consegui enviar sua mensagem. Confira os campos ou me chame por e-mail.";
+  formulario.prepend(aviso);
+}
